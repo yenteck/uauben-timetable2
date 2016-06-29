@@ -1,5 +1,5 @@
 UAUBEN-TIMETABLE2
 =================
 
-A Symfony project created on June 29, 2016, 9:11 am.
+Un systeme de gestion des emploies de temps pour l'universite aube nouvelle .Il s'agit de la version 2 du systeme en symfony
 # uauben-timetable2
