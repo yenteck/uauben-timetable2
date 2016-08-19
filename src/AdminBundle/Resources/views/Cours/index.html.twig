@@ -1,0 +1,140 @@
+{% extends "AdminBundle::base.html.twig" %}
+{% block content_title %}
+    DETAILS EMPLOI ({{ aEmploi.classe.code }})
+{% endblock  %}
+
+
+{% block breadcrumb %}
+    <li>
+        <a href="{{ path("admin_homepage") }}"> <i class="fa fa-dashboard"></i> Dashboard</a>
+    </li>
+    <li class="">
+        <a href="{{ path("ad_emplois") }}"> Emploi</a>
+    </li>
+    <li class="active">
+        </i> {{ aEmploi.titre }}</a>
+    </li>
+{% endblock %}
+
+
+{% block message %}
+    Bienvenue sur la page de modification des emplois de temps
+{% endblock %}
+
+{% block contenu_gauche %}
+
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <b class="panel-title">
+                        <div class="col-lg-6">
+                            <a class="btn btn-primary"><span class="glyphicon glyphicon-print"></span>Imprimer</a>
+                            <a class="btn btn-primary" href=""><span class="glyphicon glyphicon-print"></span>Imprimer</a>
+                        </div>
+                        <div class="col-lg-4">
+                            <a href="{{ path("ad_cours_add",{"id":aEmploi.id}) }}" class="pull-right btn btn-primary " id="add-cours-btn"><span class="glyphicon glyphicon-plus"></span>NOUVEAU COURS</a>
+                        </div>
+                        <div class="clearfix"></div>
+                    </b>
+
+                </div>
+                <div class="panel-body">
+                    <div id="loadEmploi"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset("bundles/admin/css/plugins/bootstrap-datetimepicker.min.css") }}">
+{% endblock stylesheets %}
+{% block javasscripts %}
+    {{ parent() }}
+    <script src="{{ asset("bundles/admin/js/plugins/bootstrap-datetimepicker.min.js") }}"></script>
+    <script>
+
+        $("a[edit]").on("click", function (e) {
+            e.preventDefault();
+
+            var _idarticle= $(this).attr("edit");
+
+            var _link="{{ path("ad_cours_edit",{"id":888}) }}";
+
+            _link=_link.replace("888",_idarticle);
+
+
+            $("#notice .modal-title").html("<b> MODIFICATION DU COURS</b>");
+            $("#notice .modal-body").html("<div class='text-center'> un instant ...</div>");
+            $("#notice").modal()
+
+
+            $.ajax({
+                url:_link,
+                success:function(data){
+                    $("#notice .modal-body").html(data)
+                },
+                error: function (err) {
+                    $("#notice .modal-body").html("<b class='text-danger'> ERREUR LORS DU CHARGMENT</b>")
+                },
+                failed: function () {
+                    $("#notice .modal-body").html("<b class='text-danger'> ERREUR LORS DU CHARGMENT</b>")
+                }
+            })
+        })
+
+
+        $("#add-cours-btn").on("click", function (e) {
+            e.preventDefault();
+
+            $("#notice .modal-title").html("<b> NOUVEAU COURS</b>");
+            $("#notice .modal-body").html("<div class='text-center'> un instant ...</div>");
+            $("#notice").modal()
+
+
+            $.ajax({
+                url:"{{ path("ad_cours_add",{"id":aEmploi.id}) }}",
+                success:function(data){
+                    $("#notice .modal-body").html(data)
+                    loadEmploi()
+                },
+                error: function (err) {
+                    $("#notice .modal-body").html("<b class='text-danger'> ERREUR LORS DU CHARGMENT</b>")
+                },
+                failed: function () {
+                    $("#notice .modal-body").html("<b class='text-danger'> ERREUR LORS DU CHARGMENT</b>")
+                }
+            })
+        })
+
+        $('.datepicker').datepicker({
+            locale: 'fr',
+            format:'yy:dd'
+        });
+
+
+        function loadEmploi(){
+            $.ajax({
+                url:"{{ path("ad_emplois_display",{"id":aEmploi.id}) }}",
+                success:function(data){
+                    $("#loadEmploi").html(data)
+                },
+                error: function (err) {
+                    $("#loadEmploi").html("<b class='text-danger'> ERREUR LORS DU CHARGMENT</b>")
+                },
+                failed: function () {
+                    $("#loadEmploi").html("<b class='text-danger'> ERREUR LORS DU CHARGMENT</b>")
+                }
+            })
+        }
+
+        $(window).on('load', function () {
+            loadEmploi()
+        })
+    </script>
+{% endblock %}
+
+

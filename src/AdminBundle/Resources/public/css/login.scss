@@ -1,0 +1,54 @@
+body{
+  background: #F3F7F9;
+}
+
+//
+.login-form{
+
+  width: 350px;
+  margin: 10% auto;
+}
+
+.error-div{
+  border:solid 3px #ff4a48;
+  color: #ff5941;
+  padding: 5px;
+  text-align: center;
+}
+form{
+
+}
+
+table{
+  background: #fff;
+  border:solid 1px #aaaaaa;
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+  td{
+    padding: 10px;
+
+    &.logo{
+      text-align: center;
+      border:solid 1px #2477E7;
+      padding: 15px;
+    }
+  }
+}
+// inputs
+
+input[type=submit]{
+  border:solid 1px #040074;
+  padding: 5px;
+  background: rgba(7, 3, 116, 0.98);
+  color:#fff;
+  border-radius: 2px;
+}
+input[type=text]{
+  padding: 8px;
+  border:solid 1px #aaa;
+}
+
+input[type=password]{
+  padding: 8px;
+  border:solid 1px #aaa;
+}
+

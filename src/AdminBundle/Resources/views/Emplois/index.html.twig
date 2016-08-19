@@ -1,0 +1,148 @@
+{% extends "AdminBundle::base.html.twig" %}
+
+{% block content_title %}
+    EMPLOIS DU TEMPS
+{% endblock  %}
+
+
+{% block breadcrumb %}
+    <li>
+        <i class="fa fa-dashboard"></i> Tabeleau de bord
+    </li>
+    <li class="active">
+        <i class="fa fa-dashboard"></i> Emplois
+    </li>
+{% endblock %}
+
+{% block message %}
+    Bienvenu sur la liste des emplois de temps .Triez les emplois en fonction de votre classe
+{% endblock %}
+
+{% block contenu_gauche %}
+    <!-- Page Heading -->
+
+    <!-- /.row -->
+
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <b class="panel-title">
+                        <i class="fa fa-bar-chart-o fa-fw"></i> </b>
+                    <a href="" class=" btn btn-primary pull-right" id="add-prof-btn"> <span class="glyphicon glyphicon-plus"></span>NOUVEAU</a>
+
+                </div>
+                <div class="panel-body">
+                    {{ grid(grid,':APYGRID:blocks.html.twig') }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock contenu_gauche%}
+
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset("bundles/admin/css/plugins/bootstrap-datetimepicker.min.css") }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css">
+{% endblock %}
+{% block javasscripts %}
+    {{ parent() }}
+    <script src="{{ asset("bundles/admin/js/plugins/bootstrap-datetimepicker.min.js") }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
+    <script>
+
+        $("[edit]").on("click", function (e) {
+            e.preventDefault();
+
+            var _idprof= $(this).attr("edit");
+
+            var _link="{{ path("ad_emplois_edit",{"id":888}) }}";
+
+            _link=_link.replace("888",_idprof);
+
+
+            $("#notice .modal-title").html("<b> MODIFICATION DE L'EMPLOI DE TEMPS</b>");
+            $("#notice .modal-body").html("<div class='text-center'> un instant ...</div>");
+            $("#notice").modal()
+
+
+            $.ajax({
+                url:_link,
+                success:function(data){
+                    $("#notice .modal-body").html(data)
+                    $('.selectpicker').selectpicker({
+
+                    });
+                },
+                error: function (err) {
+                    $("#notice .modal-body").html("<b class='text-danger'> ERREUR LORS DU CHARGMENT</b>")
+                },
+                failed: function () {
+                    $("#notice .modal-body").html("<b class='text-danger'> ERREUR LORS DU CHARGMENT</b>")
+                }
+            })
+        })
+
+
+        $("#add-prof-btn").on("click", function (e) {
+            e.preventDefault();
+
+            $("#notice .modal-title").html("<b> NOUVEAU EMPLOI DE TEMPS</b>");
+            $("#notice .modal-body").html("<div class='text-center'> un instant ...</div>");
+            $("#notice").modal()
+
+
+            $.ajax({
+                url:"{{ path("ad_emplois_add") }}",
+                success:function(data){
+                    $("#notice .modal-body").html(data)
+                    $('.selectpicker').selectpicker({
+
+                    });
+                },
+                error: function (err) {
+                    $("#notice .modal-body").html("<b class='text-danger'> ERREUR LORS DU CHARGMENT</b>")
+                },
+                failed: function () {
+                    $("#notice .modal-body").html("<b class='text-danger'> ERREUR LORS DU CHARGMENT</b>")
+                }
+            })
+        })
+
+        $("[reuse]").on("click", function (e) {
+            e.preventDefault();
+
+            var _idemploi= $(this).attr("reuse");
+
+            var _link="{{ path("ad_emplois_reuse",{"id":888}) }}";
+
+            _link=_link.replace("888",_idemploi);
+
+
+            $("#notice .modal-title").html("<b> REUTILISATION DE L'EMPLOI DE TEMPS</b>");
+            $("#notice .modal-body").html("<div class='text-center'> un instant ...</div>");
+            $("#notice").modal()
+
+
+            $.ajax({
+                url:_link,
+                success:function(data){
+                    $("#notice .modal-body").html(data)
+                    $('.selectpicker').selectpicker({
+
+                    });
+                },
+                error: function (err) {
+                    $("#notice .modal-body").html("<b class='text-danger'> ERREUR LORS DU CHARGMENT</b>")
+                },
+                failed: function () {
+                    $("#notice .modal-body").html("<b class='text-danger'> ERREUR LORS DU CHARGMENT</b>")
+                }
+            })
+        })
+    </script>
+{% endblock %}

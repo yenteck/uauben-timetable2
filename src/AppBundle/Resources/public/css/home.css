@@ -1,0 +1,66 @@
+.arriere {
+  background: #040056;
+  padding: 30px; }
+  .arriere .corps {
+    border: solid 1px;
+    margin-top: 20px;
+    width: 900px;
+    border-radius: 10px;
+    box-shadow: 0 0 0px 10px rgba(0, 0, 0, 0.3);
+    background: #fff;
+    padding: 20px; }
+    .arriere .corps .header {
+      padding: 10px 0 10px 0; }
+    .arriere .corps .infos-header {
+      border-bottom: solid 1px #aaa;
+      padding: 5px;
+      margin-bottom: 10px; }
+      .arriere .corps .infos-header h3 {
+        padding: 0;
+        margin: 0; }
+  .arriere .footer {
+    color: #fff;
+    padding: 10px;
+    margin: 10px; }
+
+#page-head {
+  border-top: solid 1px #000037;
+  border-bottom: solid 10px #000037;
+  border-left: solid 1px #000037;
+  border-right: solid 1px #000037;
+  padding-bottom: 10px;
+  padding-top: 10px; }
+  #page-head .link-admin-p {
+    margin-top: 30px; }
+  #page-head .link-admin {
+    border: solid 1px;
+    color: #fff;
+    background: #FF6920;
+    padding: 8px;
+    border-radius: 5px; }
+    #page-head .link-admin:hover {
+      text-decoration: none; }
+
+.slider {
+  padding: 0;
+  height: 200px; }
+  .slider img {
+    width: 100%;
+    height: 100%; }
+
+#page-panel {
+  border: solid 1px transparent;
+  margin-top: 20px;
+  padding: 0; }
+  #page-panel .new-ticker {
+    margin-bottom: 10px; }
+  #page-panel .tools-classe {
+    padding: 5px; }
+  #page-panel .loadEmploi {
+    margin-top: 20px;
+    border: solid 1px #000037; }
+
+.footer {
+  margin-top: 100px; }
+
+/*# sourceMappingURL=home.css.map */

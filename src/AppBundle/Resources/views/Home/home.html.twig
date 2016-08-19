@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Emploi de temps</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="{{ asset("bundles/app/css/plugins/ticker.css") }}">
+    <link rel="stylesheet" href="{{ asset('bundles/app/css/home.css') }}">
+
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="row">
+            <header class="col-lg-10 col-lg-offset-1 "id="page-head" >
+                <img src="{{ asset("bundles/app/img/logo.jpg") }}" alt="logo">
+
+                <div class="pull-right link-admin-p">
+                    <a href="{{ path("admin_homepage") }}" class="link-admin">administration</a>
+                </div>
+            </header>
+            <div class="slider col-lg-10 col-lg-offset-1 ">
+                <img src="{{ asset("bundles/app/img/slide1.jpg") }}" alt="slide1">
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1 " id="page-panel" >
+                <div class="ticker-container news-ticker">
+                    <div class="ticker-caption">
+                        <p>INFO FLASH</p>
+                    </div>
+
+                    <ul>
+                        {% for inf in articles %}
+                        <div>
+                            <li><span><b>{{ inf.datecreation | date("d M ,H:i") }}</b> &ndash;{{ inf.titre }} <a href="#">more</a></span></li>
+                        </div>
+                        {% endfor %}
+                    </ul>
+
+                </div>
+
+
+                <div class="tools-classe text-center">
+                    <form action="" method="post">
+
+                        choisir votre classe
+
+                        <select name="classe" class="selectpicker" data-live-search="true">
+                            {% for cl in classes %}
+                                <option  label="mona" value="{{ cl.id }}">{{ cl.code }} ({{ cl.filiere.libelle }})</option>
+                            {% endfor %}
+                        </select>
+                    </form>
+                </div>
+
+                <div class="loadEmploi">
+                    <p class="text-center" style="margin-top: 20px;">
+                        ! veuillez choisir votre classe
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+        <footer class="row footer">
+            <div class="col-lg-10 col-lg-offset-1 text-center">
+                yenteck entreprise &#169 2016
+            </div>
+        </footer>
+    </div>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
+    <script src="{{ asset("bundles/app/css/plugins/ticker.js") }}"></script>
+    <script>
+    $('.selectpicker').selectpicker({
+        size:6
+    });
+</script>
+</body>
+</html>

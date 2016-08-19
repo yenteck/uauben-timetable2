@@ -1,0 +1,210 @@
+admin_homepage:
+    path:     /
+    defaults: { _controller: AdminBundle:Admin:index }
+
+##----------admin professeurs
+
+ad_professeurs:
+    path:     /professeurs
+    defaults: { _controller: AdminBundle:Professeurs:index }
+
+
+ad_professeurs_delete:
+    path:     /professeurs/{id}/delete
+    defaults: { _controller: AdminBundle:Professeurs:delete }
+
+ad_professeurs_edit:
+    path:     /professeurs/{id}/edit
+    defaults: { _controller: AdminBundle:Professeurs:edit }
+
+ad_professeurs_add:
+    path:     /professeurs/add
+    defaults: { _controller: AdminBundle:Professeurs:add }
+
+
+##------end ----admin professeurs
+
+
+##----------admin filieres
+
+ad_filieres:
+    path:     /filieres
+    defaults: { _controller: AdminBundle:Filieres:index }
+
+ad_filieres_add:
+    path:     /filieres/add
+    defaults: { _controller: AdminBundle:Filieres:add }
+
+ad_filieres_edit:
+    path:     /filieres/{id}/edit
+    defaults: { _controller: AdminBundle:Filieres:edit }
+
+ad_filieres_delete:
+    path:     /filieres/{id}/delete
+    defaults: { _controller: AdminBundle:Filieres:delete }
+
+
+##-------------salle
+
+
+ad_salles:
+    path:     /salles
+    defaults: { _controller: AdminBundle:Salles:index }
+
+ad_salles_add:
+    path:     /salles/add
+    defaults: { _controller: AdminBundle:Salles:add }
+
+
+ad_salles_edit:
+    path:     /salles/{id}/edit
+    defaults: { _controller: AdminBundle:Salles:edit }
+
+ad_salles_delete:
+    path:     /salles/{id}/delete
+    defaults: { _controller: AdminBundle:Salles:delete }
+
+## classes admin
+
+
+ad_classes:
+    path:     /classes
+    defaults: { _controller: AdminBundle:Classes:index }
+
+ad_classes_add:
+    path:     /classes/add
+    defaults: { _controller: AdminBundle:Classes:add }
+
+ad_classes_edit:
+    path:     /classes/{id}/edit
+    defaults: { _controller: AdminBundle:Classes:edit }
+
+ad_classes_delete:
+    path:     /classes/{id}/delete
+    defaults: { _controller: AdminBundle:Classes:delete }
+
+
+
+## matiere admin
+
+ad_matieres:
+    path:     /matieres
+    defaults: { _controller: AdminBundle:Matieres:index }
+
+ad_matieres_add:
+    path:     /matieres/add
+    defaults: { _controller: AdminBundle:Matieres:add }
+
+ad_matieres_edit:
+    path:     /matieres/{id}/edit
+    defaults: { _controller: AdminBundle:Matieres:edit }
+
+ad_matieres_delete:
+    path:     /matieres/{id}/delete
+    defaults: { _controller: AdminBundle:Matieres:delete }
+
+
+## LOCAUX
+ad_locals:
+    path:     /locaux
+    defaults: { _controller: AdminBundle:Locals:index }
+
+
+ad_locals_add:
+    path:     /locaux/add
+    defaults: { _controller: AdminBundle:Locals:add }
+
+ad_locals_edit:
+     path:     /locaux/{id}/edit
+     defaults: { _controller: AdminBundle:Locals:edit }
+
+## ADMIN ECOLE
+
+ad_configuration:
+     path:     /configuration
+     defaults: { _controller: AdminBundle:Configuration:index }
+
+ad_configuration_edit:
+     path:     /configuration/edit
+     defaults: { _controller: AdminBundle:Configuration:edit }
+
+
+## admin infos
+
+
+ad_infos:
+     path:     /infosflash
+     defaults: { _controller: AdminBundle:Infos:index }
+
+ad_infos_add:
+     path:     /infosflash/add
+     defaults: { _controller: AdminBundle:Infos:add }
+
+
+ad_infos_edit:
+     path:     /infosflash/{id}/edit
+     defaults: { _controller: AdminBundle:Infos:edit }
+
+ad_infos_delete:
+     path:     /infosflash/{id}/delete
+     defaults: { _controller: AdminBundle:Infos:delete }
+
+## admin emploi de temps
+
+ad_emplois:
+     path:     /emploi
+     defaults: { _controller: AdminBundle:Emplois:index }
+
+ad_emplois_add:
+     path:     /emploi/add
+     defaults: { _controller: AdminBundle:Emplois:add }
+
+ad_emplois_edit:
+     path:     /emploi/{id}/edit
+     defaults: { _controller: AdminBundle:Emplois:edit }
+
+ad_emplois_reuse:
+     path:     /emploi/{id}/reuse
+     defaults: { _controller: AdminBundle:Emplois:reuse }
+
+
+ad_emplois_display:
+     path:     /emploi/{id}/display
+     defaults: { _controller: AdminBundle:Emplois:display }
+
+
+ad_emplois_delete:
+     path:     /emploi/{id}/delete
+     defaults: { _controller: AdminBundle:Emplois:delete }
+
+
+##voir cours
+ad_cours:
+     path:     /emploi/{id}/show
+     defaults: { _controller: AdminBundle:Cours:index }
+
+ad_cours_add:
+     path:     /emploi/{id}/add/cours
+     defaults: { _controller: AdminBundle:Cours:add }
+
+ad_cours_edit:
+     path:     /emploi/cours/{id}/edit
+     defaults: { _controller: AdminBundle:Cours:edit }
+
+## MODIFICATION DE MON PROFIL
+
+ad_profile:
+     path:     /profile
+     defaults: { _controller: AdminBundle:Profile:index }
+
+
+#admin users
+ad_users:
+     path:     /utilisateurs
+     defaults: { _controller: AdminBundle:Users:index }
+
+ad_users_active:
+     path:     /utilisateurs/{id}/active
+     defaults: { _controller: AdminBundle:Users:active }
+
+

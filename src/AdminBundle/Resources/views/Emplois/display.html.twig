@@ -1,0 +1,66 @@
+{% for key,val in tabEmploi %}
+<div class="panel panel-default">
+
+    <div class="panel-heading">
+        {{ key }}
+    </div>
+    <div class="panel-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>HEURE</th>
+                    <th>MATIERE</th>
+                    <th>SALLE</th>
+                    <th>PROFESSEUR</th>
+                    <th>NOTES</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for k,c in val %}
+                    <tr>
+                        <td>{{ k }}</td>
+                        <td>{{ c.mat }}</td>
+                        <td>{{ c.salle }}</td>
+                        <td>{{ c.prof }}</td>
+                        <td>{{ c.note }}</td>
+                        <td><a edit="{{ c.id }}">modifier</a></td>
+                    </tr>
+                {% endfor%}
+            </tbody>
+        </table>
+
+    </div>
+</div>
+    <script>
+
+        $("a[edit]").on("click", function (e) {
+            e.preventDefault();
+
+            var _idarticle= $(this).attr("edit");
+
+            var _link="{{ path("ad_cours_edit",{"id":888}) }}";
+
+            _link=_link.replace("888",_idarticle);
+
+
+            $("#notice .modal-title").html("<b> MODIFICATION DU COURS</b>");
+            $("#notice .modal-body").html("<div class='text-center'> un instant ...</div>");
+            $("#notice").modal()
+
+
+            $.ajax({
+                url:_link,
+                success:function(data){
+                    $("#notice .modal-body").html(data)
+                },
+                error: function (err) {
+                    $("#notice .modal-body").html("<b class='text-danger'> ERREUR LORS DU CHARGMENT</b>")
+                },
+                failed: function () {
+                    $("#notice .modal-body").html("<b class='text-danger'> ERREUR LORS DU CHARGMENT</b>")
+                }
+            })
+        })
+        </script>
+{% endfor %}

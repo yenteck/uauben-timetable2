@@ -1,1 +1,19 @@
-Hello World! world
+
+    {% extends '::base.html.twig' %}
+
+    {% block stylesheets %}
+        {{ parent() }}
+        {{ datagrid_stylesheets(datagrid) }}
+    {% endblock %}
+
+    {% block javascripts %}
+        {{ parent() }}
+        {{ datagrid_javascripts(datagrid) }}
+    {% endblock %}
+
+    {% block body %}
+        <div class="container">
+            <h1>Test DataGrid</h1>
+            {{ datagrid_content(datagrid) }}
+        </div>
+    {% endblock %}

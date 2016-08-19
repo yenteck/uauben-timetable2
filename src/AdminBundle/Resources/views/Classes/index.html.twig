@@ -1,0 +1,100 @@
+{% extends "AdminBundle::base.html.twig" %}
+{% block content_title %}
+    CLASSES
+{% endblock  %}
+
+
+{% block breadcrumb %}
+    <li>
+        <a href="{{ path("admin_homepage") }}"> <i class="fa fa-dashboard"></i> Dashboard</a>
+    </li>
+    <li class="active">
+        <i class="fa fa-dashboard"></i> Classes</a>
+    </li>
+{% endblock %}
+
+
+{% block message %}
+    LES INFORMATIONS ET AUTRES
+{% endblock %}
+
+{% block contenu_gauche %}
+
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <b class="panel-title">
+                        <i class="fa fa-bar-chart-o fa-fw"></i> </b>
+                    <a href="" class=" btn btn-primary pull-right" id="add-prof-btn"> <span class="glyphicon glyphicon-plus"></span>NOUVEAU</a>
+
+                </div>
+                <div class="panel-body">
+                    {{ grid(grid,':APYGRID:blocks.html.twig') }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+
+
+{% block javasscripts %}
+    {{ parent() }}
+    <script>
+
+        $("[edit]").on("click", function (e) {
+            e.preventDefault();
+
+            var _idclasse= $(this).attr("edit");
+
+            var _link="{{ path("ad_classes_edit",{"id":888}) }}";
+
+            _link=_link.replace("888",_idclasse);
+
+
+            $("#notice .modal-title").html("<b> MODIFICATION DU PROFESSEUR</b>");
+            $("#notice .modal-body").html("<div class='text-center'> un instant ...</div>");
+            $("#notice").modal()
+
+
+            $.ajax({
+                url:_link,
+                success:function(data){
+                    $("#notice .modal-body").html(data)
+                },
+                error: function (err) {
+                    $("#notice .modal-body").html("<b class='text-danger'> ERREUR LORS DU CHARGMENT</b>")
+                },
+                failed: function () {
+                    $("#notice .modal-body").html("<b class='text-danger'> ERREUR LORS DU CHARGMENT</b>")
+                }
+            })
+        })
+
+
+        $("#add-prof-btn").on("click", function (e) {
+            e.preventDefault();
+
+            $("#notice .modal-title").html("<b> NOUVELLE FILIERE</b>");
+            $("#notice .modal-body").html("<div class='text-center'> un instant ...</div>");
+            $("#notice").modal()
+
+
+            $.ajax({
+                url:"{{ path("ad_classes_add") }}",
+                success:function(data){
+                    $("#notice .modal-body").html(data)
+                },
+                error: function (err) {
+                    $("#notice .modal-body").html("<b class='text-danger'> ERREUR LORS DU CHARGMENT</b>")
+                },
+                failed: function () {
+                    $("#notice .modal-body").html("<b class='text-danger'> ERREUR LORS DU CHARGMENT</b>")
+                }
+            })
+        })
+    </script>
+{% endblock %}

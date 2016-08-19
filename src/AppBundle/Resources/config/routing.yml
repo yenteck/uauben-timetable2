@@ -1,3 +1,30 @@
 app_homepage:
-    path:     /
+    path:     /grid
     defaults: { _controller: AppBundle:Default:index }
+
+apygrid:
+    path:     /apygrid
+    defaults: { _controller: AppBundle:Default:apygrid }
+
+edit_route:
+    path:     /apygrid/edit
+    defaults: { _controller: AppBundle:Default:edit }
+
+
+## toutes les bonnes xhoses vont demareer
+
+home:
+    path:     /
+    defaults: { _controller: AppBundle:Home:index }
+
+
+###########################all the Rest Api is there
+
+api_infos:
+    path:     /api/infos
+    defaults: { _controller: AppBundle:RestApi:infos }
+
+api_classes:
+    path:     /api/classes
+    defaults: { _controller: AppBundle:RestApi:classes }
+

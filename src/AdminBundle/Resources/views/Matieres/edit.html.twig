@@ -1,0 +1,10 @@
+<form action="{{ path("ad_matieres_edit",{"id":idmatiere}) }}" method="post">
+    {% form_theme form 'bootstrap_3_horizontal_layout.html.twig' %}
+    {{ form_widget(form) }}
+
+    <div class="form-group">
+        <input type="submit" value="ENREGISTRER" class="btn btn-primary">
+    </div>
+
+
+</form>

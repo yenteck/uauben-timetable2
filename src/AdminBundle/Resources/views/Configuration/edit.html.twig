@@ -1,0 +1,53 @@
+{% extends "AdminBundle::base.html.twig" %}
+{% block content_title %}
+    CONFIGURATION
+{% endblock  %}
+
+
+{% block breadcrumb %}
+    <li>
+        <a href="{{ path("admin_homepage") }}"> <i class="fa fa-dashboard"></i> Dashboard</a>
+    </li>
+    <li class="active">
+        <i class="fa fa-dashboard"></i> Configuration</a>
+    </li>
+{% endblock %}
+
+
+{% block message %}
+    Ici vous pouvez parametrer votre etablissement . le nom de l'etablissement , le logo et autres
+{% endblock %}
+
+{% block contenu_gauche %}
+
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <b class="panel-title">
+                        Configuration des parametres
+                    </b>
+
+                </div>
+                <div class="panel-body">
+                    <form action="{{ path("ad_configuration_edit") }}" method="post">
+                        {% form_theme form 'bootstrap_3_horizontal_layout.html.twig' %}
+                        {{ form_widget(form) }}
+
+                        <div class="form-group">
+                            <input type="submit" value="ENREGISTRER" class="btn btn-primary">
+                        </div>
+
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+
+
